@@ -22,3 +22,30 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+# User input
+args = sys.argv
+# args
+today = datetime.now()
+month = today.month
+year = today.year
+
+cal = calendar.TextCalendar()
+
+# if default cal if no input
+if len(args) == 1:
+    print("Here is the current calendar: ")
+    cal.prmonth(year, month)
+# elif 1 arg, assume month with current year
+elif len(args) == 2:
+    month = int(args[1])
+    cal.prmonth(year, month)
+    # elif 2 arg, assume month and year, return both
+elif len(args) == 3:
+    month = int(args[1])
+    year = int(args[2])
+    cal.prmonth(year, month)
+# else print description for using program
+else:
+    print("Input should be: `py 14_cal.py month [year]`")
+    # exit program
